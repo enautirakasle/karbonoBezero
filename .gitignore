@@ -1,0 +1,8 @@
+/.bithoundrc
+/.project
+/platforms/**
+/hooks/**
+/plugins/**
+/www/res/**
+/www/spec/**
+/.settings/**
