@@ -1,18 +1,3 @@
-/*
-logina egin eta zabaldu beharreko horria kargatuko du.
-*/
-function login(datuak) {
-  // alert(datuak);
-  $.post("https://enautirakasle.000webhostapp.com/login.php", datuak, function(data) {
-    if (data === "ok") {
-      $.mobile.changePage("#azterketak");
-    } else {
-      $.mobile.changePage("#pageError");
-    }
-  });
-
-}
-
 $(document).ready(function() {
   //console.log( "ready!" );
 
@@ -23,7 +8,36 @@ $(document).ready(function() {
     login($("#loginForm").serialize());
   });
 
+});
 
+
+$("#azterketaOrria").on("pagebeforeshow", function(event) {
+  var myObj = [{
+    "name": "Mikel",
+    "age": 33,
+    "city": "Ondarroa"
+  }, {
+    "name": "John",
+    "age": 31,
+    "city": "New York"
+  }];
+  var myJSON = JSON.stringify(myObj);
+  alert("kargatu aurrekoa");
 
 
 });
+
+/*
+logina egin eta zabaldu beharreko horria kargatuko du.
+*/
+function login(datuak) {
+  // alert(datuak);
+  $.post("https://enautirakasle.000webhostapp.com/login.php", datuak, function(data) {
+    if (data === "ok") {
+      $.mobile.changePage("#azterketaOrria");
+    } else {
+      $.mobile.changePage("#pageError");
+    }
+  });
+
+}
