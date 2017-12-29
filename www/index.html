@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<meta http-equiv="refresh" content="5">
+	<!--	<meta http-equiv="refresh" content="5">-->
 	<title>Karbono aztarrrna</title>
 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
@@ -17,17 +17,19 @@
 <div data-role="page" id="login" data-title="Login">
 	<div class="ui-grid-a">
 		<div class="ui-block-a">
-			<div class="ui-field-contain">
-			    <label for="erabiltzailea">Erabiltzaileaaa:</label>
-			    <input type="text" name="erabiltzailea" id="erabiltzailea" placeholder="Erabiltzailea" value="">
+			<form id="loginForm">
+				<div class="ui-field-contain">
+			    <label for="erabiltzailea">Erabiltzaileaaa:</label>
+			    <input type="text" name="erabiltzailea" id="erabiltzailea" placeholder="Erabiltzailea" value="">
 			</div>
 			<div class="ui-field-contain">
-			    <label for="pasahitza">Pasahitza:</label>
-			    <input type="text" name="pasahitza" id="pasahitza" placeholder="Pasahitza" value="">
+			    <label for="pasahitza">Pasahitza:</label>
+			    <input type="text" name="pasahitza" id="pasahitza" placeholder="Pasahitza" value="">
 			</div>
 			<div class="ui-field-contain">
-			    <button type="submit" id="sartu" class="ui-shadow ui-btn ui-corner-all">sartu</button>
+			    <button type="submit" id="sartu" class="ui-shadow ui-btn ui-corner-all">sartu</button>
 			</div>
+			</form>
 		</div>
 		<div class="ui-block-b">
 			<img src="img/huella.png" />
@@ -45,6 +47,17 @@
 	Alkantzeen formularioa
 </div><!-- /page -->
 
+		<!-- Aqui nuestro dialog con el mensaje de error  -->
+	<section id="pageError" data-role="dialog">
+		<header data-role="header">
+			<h1>Error</h1>
+		</header>
+		<article data-role="content">
+			<p>Usuario o contraseña no valida</p>
+			<a href="#" data-role="button" data-rel="back">Aceptar</a>
+		</article>
+	</section>
+	
 <!-- Start of first page: #one -->
 <div data-role="page" id="one">
 
