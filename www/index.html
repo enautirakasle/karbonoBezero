@@ -61,7 +61,61 @@
 
 	<!-- Formularioak, datuak sartzeko formularioak daude hemen: #alkanzeak -->
 	<div data-role="page" id="alkanzeak" data-title="Alkanzeak">
-		Alkantzeen formularioa</div>
+		<div data-role="header">
+			<h1>Sartu datuak</h1>
+		</div>
+		<div role="main" class="ui-content">
+		<div class="ui-field-contain">
+         <label for="text-12">Text input:</label>
+         <input type="text" name="text-12" id="text-12" value="">
+    </div>
+			<form id="kontsumoDatuak">
+				<div data-role="collapsible">
+					<h4>Alcance 1</h4>
+					<div class="ui-field-contain">
+         <label for="text-12">Text input:</label>
+         <input type="text" name="text-12" id="text-12" value="">
+    </div>
+					<div class="ui-field-contain">
+						<label for="argia">Argi kontsumoa:</label> <input type="text"
+							name="argia" id="argia" value="" />
+						<!-- placeholder="Text input" -->
+					</div>
+					<div class="ui-field-contain">
+						<label for="gasa">Gas kontsumoa:</label> <input type="text"
+							name="gasa" id="gasa" value="" /> <label for="ura">Ur
+							kontsumoa:</label> <input type="text" name="ura" id="ura" value="" />
+						<!-- placeholder="Text input" -->
+					</div>
+				</div>
+				<div data-role="collapsible">
+					<h4>Alcance 2</h4>
+					<div class="ui-field-contain">
+						<label for="kontsumoa4">Kontsumoa4:</label> <input type="text"
+							name="kontsumoa4" id="kontsumoa4" value="" />
+						<!-- placeholder="Text input" -->
+					</div>
+					<div class="ui-field-contain">
+						<label for="kontsumoa5">Kontsumoa5:</label> <input type="text"
+							name="kontsumoa5" id="kontsumoa5" value="" />
+					</div>
+				</div>
+				<div data-role="collapsible">
+					<h4>Alcance 3</h4>
+					<div class="ui-field-contain">
+						<label for="kontsumoa6">Kontsumoa6:</label> <input type="text"
+							name="kontsumoa6" id="kontsumoa6" value="" />
+						<!-- placeholder="Text input" -->
+					</div>
+					<div class="ui-field-contain">
+						<label for="kontsumoa7">Kontsumoa7:</label> <input type="text"
+							name="kontsumoa7" id="kontsumoa7" value="" />
+					</div>
+				</div>
+			</form>
+		</div>
+		<div data-role="footer"></div>
+	</div>
 	<!-- /page -->
 
 	<!-- Aqui nuestro dialog con el mensaje de error  -->
@@ -75,6 +129,9 @@
 		</article>
 	</section>
 
+
+
+	<!-- aurretik zegoena -->
 	<!-- Start of first page: #one -->
 	<div data-role="page" id="one">
 
@@ -201,7 +258,6 @@
 		<!-- /footer -->
 	</div>
 	<!-- /page popup -->
-
 </body>
 <script src="js/main.js"></script>
 </html>
