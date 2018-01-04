@@ -23,7 +23,12 @@ $("#azterketaOrria").on("pagebeforeshow", function(event) {
   }];
   var myJSON = JSON.stringify(myObj);
   alert("kargatu aurrekoa");
-
+  var arraia = JSON.parse(myJSON);
+ for (i = 0; i < arraia.length; i++) {
+   var pertsona = arraia[i];
+    //alert(pertsona.name);
+   $('#azterketaZerrenda').append('<li><a>' + pertsona.name + ' ' + pertsona.city + '</a></li>').listview('refresh');
+} 
 
 });
 
