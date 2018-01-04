@@ -5,4 +5,5 @@
 /plugins/**
 /www/res/**
 /www/spec/**
+/www/jquery.mobile/demos/**
 /.settings/**
