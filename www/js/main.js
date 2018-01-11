@@ -22,7 +22,7 @@ $("#azterketaOrria").on("pagebeforeshow", function(event) {
     "city": "New York"
   }];
   var myJSON = JSON.stringify(myObj);
-  alert("kargatu aurrekoa");
+  //alert("kargatu aurrekoa");
   var arraia = JSON.parse(myJSON);
  for (i = 0; i < arraia.length; i++) {
    var pertsona = arraia[i];
