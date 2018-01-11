@@ -11,7 +11,7 @@ $(document).ready(function() {
 });
 
 
-$("#azterketaOrria").on("pagebeforeshow", function(event) {
+$("#eraikinOrria").on("pagebeforeshow", function(event) {
   var myObj = [{
     "name": "Mikel",
     "age": 33,
@@ -27,7 +27,7 @@ $("#azterketaOrria").on("pagebeforeshow", function(event) {
  for (i = 0; i < arraia.length; i++) {
    var pertsona = arraia[i];
     //alert(pertsona.name);
-   $('#azterketaZerrenda').append('<li><a>' + pertsona.name + ' ' + pertsona.city + '</a></li>').listview('refresh');
+   $('#eraikinZerrenda').append('<li><a>' + pertsona.name + ' ' + pertsona.city + '</a></li>').listview('refresh');
 } 
 
 });
@@ -39,7 +39,7 @@ function login(datuak) {
   // alert(datuak);
   $.post("https://enautirakasle.000webhostapp.com/login.php", datuak, function(data) {
     if (data === "ok") {
-      $.mobile.changePage("#azterketaOrria");
+      $.mobile.changePage("#eraikinOrria");
     } else {
       $.mobile.changePage("#pageError");
     }
