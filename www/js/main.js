@@ -27,9 +27,20 @@ $("#azterketaOrria").on("pagebeforeshow", function(event) {
  for (i = 0; i < arraia.length; i++) {
    var pertsona = arraia[i];
     //alert(pertsona.name);
-   $('#azterketaZerrenda').append('<li><a>' + pertsona.name + ' ' + pertsona.city + '</a></li>').listview('refresh');
+   $('#azterketaZerrenda').append('<li><a href="?id='+ (i+5) +'#alkanzeak">' + pertsona.name + ' ' + pertsona.city + '</a></li>').listview('refresh');
 } 
 
+  
+  function clickBerezi (hau) {
+    console.log($(hau).data('id'));
+  }
+  
+$('.edif').click(function(e) {
+  //e.preventDefault();
+  clickBerezi(this);
+  return false;
+});
+  
 });
 
 /*
