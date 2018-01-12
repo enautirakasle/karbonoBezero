@@ -1,59 +1,82 @@
 $(document).ready(function() {
-  //console.log( "ready!" );
 
-  //login botoia programatu
-  $('#sartu').on("click", function(event) {
-    event.preventDefault();
-    //alert("submit sakatua");
-    login($("#loginForm").serialize());
-  });
+	// login botoia programatu
+	$('#sartu').on("click", function(event) {
+		event.preventDefault();
+		// alert("submit sakatua");
+		login($("#loginForm").serialize());
+	});
 
-});
+	//edifizio bag aukeratzen denean ejecutatu beharrekoa
+	$('.edif').click(function(e) {
+		//e.preventDefault();
+		alkanzeOrriaBete(this);
+		return false;
+	}); //fin .edif
+
+}); //ready bukaera
 
 
-$("#azterketaOrria").on("pagebeforeshow", function(event) {
-  var myObj = [{
-    "name": "Mikel",
-    "age": 33,
-    "city": "Ondarroa"
-  }, {
-    "name": "John",
-    "age": 31,
-    "city": "New York"
-  }];
-  var myJSON = JSON.stringify(myObj);
-  alert("kargatu aurrekoa");
-  var arraia = JSON.parse(myJSON);
- for (i = 0; i < arraia.length; i++) {
-   var pertsona = arraia[i];
-    //alert(pertsona.name);
-   $('#azterketaZerrenda').append('<li><a href="?id='+ (i+5) +'#alkanzeak">' + pertsona.name + ' ' + pertsona.city + '</a></li>').listview('refresh');
-} 
+// eraikinen orria erakutsi aurretik zerbait egiteko proba bat
+$("#eraikinOrria").on(
+	"pagebeforeshow",
+	function(event) {
+		var myObj = [{
+			"name": "Mikel",
+			"age": 33,
+			"city": "Ondarroa"
+		}, {
+			"name": "John",
+			"age": 31,
+			"city": "New York"
+		}];
+		var myJSON = JSON.stringify(myObj);
+		// alert("kargatu aurrekoa");
+		var arraia = JSON.parse(myJSON);
+		for (i = 0; i < arraia.length; i++) {
+			var pertsona = arraia[i];
+			// alert(pertsona.name);
+			$('#eraikinZerrenda').append(
+				'<li><a href="?id=' + (i + 10) + '#alkantzeak">' +
+				pertsona.name + ' ' + pertsona.city +
+				'</a></li>').listview('refresh');
+		}
+	});
 
-  
-  function clickBerezi (hau) {
-    console.log($(hau).data('id'));
-  }
-  
-$('.edif').click(function(e) {
-  //e.preventDefault();
-  clickBerezi(this);
-  return false;
-});
-  
-});
+
+// alkantzeen orria kargatu aurretik proba batzuk egiten
+//momentuz ez da ezertarako
+/*
+$('#alkantzeak').on(
+	'pagebeforeshow',
+	function(event) {
+		Console.log(decode);
+		// TODO erakinarenDatuak.php egiteke dago
+		$.post("https://enautirakasle.000webhostapp/eraikinarenDatuak.php",
+			datuak,
+			function(data) {
+				// TODO zerbitzariaren erantzuna doa hemen
+
+			});
+	});
+	*/
 
 /*
-logina egin eta zabaldu beharreko horria kargatuko du.
-*/
+ * logina egin eta zabaldu beharreko horria kargatuko du.
+ */
 function login(datuak) {
-  // alert(datuak);
-  $.post("https://enautirakasle.000webhostapp.com/login.php", datuak, function(data) {
-    if (data === "ok") {
-      $.mobile.changePage("#azterketaOrria");
-    } else {
-      $.mobile.changePage("#pageError");
-    }
-  });
+	// alert(datuak);
+	$.post("https://enautirakasle.000webhostapp.com/login.php", datuak,
+		function(data) {
+			if (data === "ok") {
+				$.mobile.changePage("#eraikinOrria");
+			} else {
+				$.mobile.changePage("#pageError");
+			}
+		});
+}
 
+//clikatu den eraikinetik bere id-arekin alkatzeen orria bete
+function alkanzeOrriaBete(hau) {
+	console.log($(hau).data('id'));
 }
