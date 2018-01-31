@@ -79,9 +79,9 @@ function login(datuak) {
 }
 
 function probaJson(datuak){
-	$.post("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
+	$.get("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
 		function(data) {
-				alert(data);
+				alert(data.name + "\n" + data.description + "\n" + data.postcode + "\n" + data.address_with_number);
 		});
 }
 
