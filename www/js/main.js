@@ -6,6 +6,7 @@ $(document).ready(function() {
 		// alert("submit sakatua");
 		//login($("#loginForm").serialize());
 		probaJson($("#loginForm").serialize());
+		
 	});
 
 	//edifizio bag aukeratzen denean ejecutatu beharrekoa
@@ -77,14 +78,15 @@ function login(datuak) {
 		});
 }
 
+function probaJson(datuak){
+	$.post("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
+		function(data) {
+				alert(data);
+		});
+}
+
 //clikatu den eraikinetik bere id-arekin alkatzeen orria bete
 function alkanzeOrriaBete(hau) {
 	console.log($(hau).data('id'));
 }
 
-function probaJson(datuak){
-	$.post("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
-		function(data) {
-			alert(data);
-		});
-}
