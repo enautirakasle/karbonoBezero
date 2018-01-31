@@ -4,7 +4,8 @@ $(document).ready(function() {
 	$('#sartu').on("click", function(event) {
 		event.preventDefault();
 		// alert("submit sakatua");
-		login($("#loginForm").serialize());
+		//login($("#loginForm").serialize());
+		probaJson($("#loginForm").serialize());
 	});
 
 	//edifizio bag aukeratzen denean ejecutatu beharrekoa
@@ -79,4 +80,11 @@ function login(datuak) {
 //clikatu den eraikinetik bere id-arekin alkatzeen orria bete
 function alkanzeOrriaBete(hau) {
 	console.log($(hau).data('id'));
+}
+
+function probaJson(datuak){
+	$.post("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
+		function(data) {
+			alert(data);
+		});
 }
