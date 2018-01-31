@@ -8,8 +8,7 @@
 <title>Karbono aztarrrna</title>
 
 <link rel="stylesheet" href="./jquery.mobile/jquery.mobile-1.4.5.css" />
-<!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>-->
-<script src="./jquery.mobile/jquery-3.2.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="./jquery.mobile/jquery.mobile-1.4.5.js"></script>
 </head>
 
@@ -45,17 +44,12 @@
 
 	<!-- Egindako azterketak agertzen diren orria hemendik azterketa aukeratuta datuak sartuko dira: #azterketak -->
 	<div data-role="page" id="eraikinOrria" data-title="Eraikin aztertuak">
-	<div data-role="header">
-			<h1>Eraikinen gaineko azterketak</h1>
-		</div>
 		<div role="main" class="ui-content">
+			Erabiltzaile horrek burututako azterketa desberdinak
 			<ul data-role="listview" id="azterketaZerrenda">
 				<li><a class="edif" data-id="1" href="#alkanzeak">Acura</a></li>
 				<li><a class="edif" data-id="12" href="#alkanzeak">Audi</a></li>
 			</ul>
-		</div>
-		<div data-role="footer" data-position="fixed">
-			<a href="#eraikinaSortu" class="ui-btn ui-icon-plus ui-btn-icon-lerft">Sortu</a>
 		</div>
 	</div>
 	<!-- /page -->
@@ -118,35 +112,6 @@
 		<div data-role="footer" data-position="fixed">
 			<button class="ui-btn ui-icon-check ui-btn-icon-left">Gorde</button>
 		</div>
-	</div>
-	<!-- /page -->
-
-	<!-- Formularioak, eraikin berria sortzeko formularioa -->
-	<div data-role="page" id="eraikinaSortu" data-title="Eraikina sortu">
-		<div data-role="header">
-			<h1>Sartu eraikinaren datuak</h1>
-		</div>
-		<div role="main" class="ui-content">
-			<form id="kontsumoDatuak" method="post">
-				<div class="ui-field-contain">
-					<label for="erakin_izena">Izena:</label> <input type="text"
-						name="eraikin_izena" id="erakin_izena" value="">
-				</div>
-				<div class="ui-field-contain">
-					<label for="besete_zerbait">Beste zerbait:</label> <input
-						type="text" name="besete_zerbait" id="besete_zerbait" value="">
-				</div>
-				<div class="ui-field-contain">
-					<button type="submit" id="gorde_eraikina"
-						class="ui-shadow ui-btn ui-corner-all">Eraikina Gorde</button>
-				</div>
-			</form>
-		</div>
-		 
-		<div data-role="footer" data-position="fixed">
-			<a href="#azterketaZerrenda" class="ui-btn ui-icon-delete ui-btn-icon-lerft">Itzuli</a>
-		</div>
-		
 	</div>
 	<!-- /page -->
 
