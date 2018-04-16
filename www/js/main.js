@@ -4,8 +4,8 @@ $(document).ready(function() {
 	$('#sartu').on("click", function(event) {
 		event.preventDefault();
 		// alert("submit sakatua");
-		//login($("#loginForm").serialize());
-		probaJson($("#loginForm").serialize());
+		login($("#loginForm").serialize());
+		//probaJson($("#loginForm").serialize());
 		
 	});
 
@@ -68,18 +68,34 @@ $('#alkantzeak').on(
  */
 function login(datuak) {
 	// alert(datuak);
-	$.post("https://enautirakasle.000webhostapp.com/login.php", datuak,
-		function(data) {
-			if (data === "ok") {
-				$.mobile.changePage("#eraikinOrria");
-			} else {
-				$.mobile.changePage("#pageError");
-			}
-		});
+	$.ajax({
+		
+		headers:{
+			"Accept":"aplication/json",
+			"Content-Type":"aplication/json"},
+		method: "POST",
+		url: "http://karbonoaztarna.herokuapp.com/api/login",
+		 dataType: 'json',
+		data: datuak,
+		success: function(result){
+	       alert("ondo");
+	      
+	    }
+	});
+	
+	
+//	$.post("https://enautirakasle.000webhostapp.com/login.php", datuak,
+//		function(data) {
+//			if (data === "ok") {
+//				$.mobile.changePage("#eraikinOrria");
+//			} else {
+//				$.mobile.changePage("#pageError");
+//			}
+//		});
 }
 
 function probaJson(datuak){
-	$.get("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
+	$.post("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
 		function(data) {
 				alert(data.name + "\n" + data.description + "\n" + data.postcode + "\n" + data.address_with_number);
 		});
