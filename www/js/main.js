@@ -109,8 +109,8 @@ function login(datuak) {
 //	});
 	 $.ajax({
          type: 'POST',
-         url:  'https://enautirakasle.000webhostapp.com/login.php',
-         data: { email: "kaiixxoooo", password: "pasahitza" }
+         url:  'http://127.0.0.1:8000/api/login',
+         data: datuak
       })
          .done( function (responseText) {
             // Triggered if response status code is 200 (OK)
