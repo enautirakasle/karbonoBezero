@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--	<meta http-equiv="refresh" content="5">-->
+<title>Karbono aztarrrna</title>
+
+
+</head>
+
+<body>
+	<!-- Logina egiteko orria, hasiera orria: #login -->
+	<div data-role="page" id="login" data-title="Login">
+		<div role="main" class="ui-content">
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<form id="loginForm" action="http://127.0.0.1:8000/api/login" method="post">
+						<div class="ui-field-contain">
+							<label for="email">Erabiltzailea:</label> <input
+								type="text" name="email" id="email"
+								placeholder="Erabiltzailea" value="sortizdearri@zubirimanteo.com">
+						</div>
+						<div class="ui-field-contain">
+							<label for="password">Pasahitza:</label> <input type="text"
+								name="password" id="password" placeholder="Pasahitza" value="sortizdearri">
+						</div>
+						<div class="ui-field-contain">
+							<button type="submit" id="sartu"
+								class="ui-shadow ui-btn ui-corner-all">sartu</button>
+						</div>
+					</form>
+				</div>
+				<div class="ui-block-b">
+					<img src="img/huella.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+</body>
+
+</html>

@@ -68,15 +68,15 @@ $('#alkantzeak').on(
  */
 function login(datuak) {
 //	// alert(datuak);
-	var jsonDatua = {email:"sortizdearri@zubirimanteo.com", password:"sortizdearri"};
+	var jsonDatua = {"email":"sortizdearri@zubirimanteo.com", "password":"sortizdearri"};
 	$.ajax({
 		headers:{
-			"Accept":"aplication/json",
-			"Content-Type":"aplication/json"},
+			"Accept":"application/json",
+			"Content-Type":"application/json"},
 		type: "POST",
-		url: "http://karbonoaztarna.herokuapp.com/api/login",
+		url: "http://127.0.0.1:8000/api/login",
 		 dataType: 'json',
-		data: jsonDatua,
+		data: {email:"sortizdearri@zubirimanteo.com", password:"sortizdearri"},
 		success: function(result){
 	       alert("ondo");
 	    },
