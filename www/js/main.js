@@ -67,22 +67,28 @@ $('#alkantzeak').on(
  * logina egin eta zabaldu beharreko horria kargatuko du.
  */
 function login(datuak) {
-	// alert(datuak);
+//	// alert(datuak);
+	var jsonDatua = {email:"sortizdearri@zubirimanteo.com", password:"sortizdearri"};
 	$.ajax({
-		
 		headers:{
 			"Accept":"aplication/json",
 			"Content-Type":"aplication/json"},
-		method: "POST",
+		type: "POST",
 		url: "http://karbonoaztarna.herokuapp.com/api/login",
 		 dataType: 'json',
-		data: datuak,
+		data: jsonDatua,
 		success: function(result){
 	       alert("ondo");
-	      
+	    },
+	    error: function(msg){
+	    	alert("gaizki");
+	    	
+	    	
 	    }
 	});
 	
+	
+
 	
 //	$.post("https://enautirakasle.000webhostapp.com/login.php", datuak,
 //		function(data) {
