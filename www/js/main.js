@@ -69,44 +69,9 @@ $('#alkantzeak').on(
 function login(datuak) {
 	
 	
-//	// alert(datuak);
-//	var jsonDatua = {"email":"sortizdearri@zubirimanteo.com", "password":"sortizdearri"};
-//	$.ajax({
-//		headers:{
-//			"Accept":"application/json",
-//			"Content-Type":"application/json"},
-//		type: "POST",
-//		url: "http://127.0.0.1:8000/api/login",
-//		 dataType: 'json',
-//		data: {email:"sortizdearri@zubirimanteo.com", password:"sortizdearri"},
-//		success: function(result){
-//	       alert("ondo");
-//	    },
-//	    error: function(msg){
-//	    	alert("gaizki");
-//	    	
-//	    	
-//	    }
-//	});
+
 	
-//	var jsonDatua = {email:"sortizdearri@zubirimanteo.com",password:"sortizdearri"};
-//	$.ajax({
-////		headers:{
-////			"Accept":"application/json",
-////			"Content-Type":"application/json"},
-//		type: "POST",
-//		url: "https://enautirakasle.000webhostapp.com/login.php",
-//		 dataType: 'json',
-//		data: jsonDatua,
-//		success: function(result){
-//	       alert("ondo");
-//	    },
-//	    error: function(msg){
-//	    	alert("gaizki");
-//	    	
-//	    	
-//	    }
-//	});
+
 	 $.ajax({
          type: 'POST',
          url:  'http://127.0.0.1:8000/api/login',
@@ -115,15 +80,20 @@ function login(datuak) {
          .done( function (responseText) {
             // Triggered if response status code is 200 (OK)
             alert("done");
+             if (responseText.data) {
+				 $.mobile.changePage("#eraikinOrria");
+			 } else {
+				 $.mobile.changePage("#pageError");
+			 }
          })
          .fail( function (jqXHR, status, error) {
             // Triggered if response status code is NOT 200 (OK)
-            alert(jqXHR.responseText);
-         })
-         .always( function() {
-            // Always run after .done() or .fail()
-           alert("beti");
+             $.mobile.changePage("#pageError");
          });
+//         .always( function() {
+//            // Always run after .done() or .fail()
+//           alert("beti");
+//         });
 	
 //	$.post("https://enautirakasle.000webhostapp.com/login.php", datuak,
 //		function(data) {
