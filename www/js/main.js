@@ -23,6 +23,35 @@ $(document).ready(function() {
 $("#eraikinOrria").on(
 	"pagebeforeshow",
 	function(event) {
+        $.ajax({
+            type: 'GET',
+			//http://karbonoaztarna.herokuapp.com/api/buildings
+            url:  'http://127.0.0.1:8000/api/buildings',
+            headers: {
+                'Authorization': 'Bearer ' + $('#token').val()
+            }
+        })
+            .done( function (responseText) {
+                // Triggered if response status code is 200 (OK)
+                //alert("done");
+                for (i = 0; i < responseText.length; i++) {
+                    var eraikina = responseText[i];
+
+                    $('#eraikinZerrenda').append(
+                        '<li>' +
+						'<a class="edif" data-id="' + eraikina.id + '" href="#alkantzeak">' +
+						eraikina.name + ' (' + eraikina.address_with_number +
+                        ')</a>' +
+						'</li>')
+						.listview('refresh');
+                }
+
+            })
+            .fail( function (jqXHR, status, error) {
+                // Triggered if response status code is NOT 200 (OK)
+                alert('error');
+            });
+		/*
 		var myObj = [{
 			"name": "Mikel",
 			"age": 33,
@@ -42,7 +71,7 @@ $("#eraikinOrria").on(
 				'<li><a href="?id=' + (i + 10) + '#alkantzeak">' +
 				pertsona.name + ' ' + pertsona.city +
 				'</a></li>').listview('refresh');
-		}
+		}*/
 	});
 
 
@@ -81,6 +110,7 @@ function login(datuak) {
             // Triggered if response status code is 200 (OK)
             alert("done");
              if (responseText.data) {
+             	$('#token').val(responseText.data.api_token);
 				 $.mobile.changePage("#eraikinOrria");
 			 } else {
 				 $.mobile.changePage("#pageError");
