@@ -9,12 +9,8 @@ $(document).ready(function() {
 		
 	});
 
-	//edifizio bag aukeratzen denean ejecutatu beharrekoa
-	$('.edif').click(function(e) {
-		//e.preventDefault();
-		alkanzeOrriaBete(this);
-		return false;
-	}); //fin .edif
+    //edifizio bag aukeratzen denean ejecutatu beharrekoa
+
 
 }); //ready bukaera
 
@@ -45,6 +41,12 @@ $("#eraikinOrria").on(
 						'</li>')
 						.listview('refresh');
                 }
+                //edifizio bag aukeratzen denean ejecutatu beharrekoa
+                $('.edif').click(function(e) {
+                    //e.preventDefault();
+                    alkanzeOrriaBete(this);
+                    return false;
+                });
 
             })
             .fail( function (jqXHR, status, error) {
@@ -145,5 +147,6 @@ function probaJson(datuak){
 //clikatu den eraikinetik bere id-arekin alkatzeen orria bete
 function alkanzeOrriaBete(hau) {
 	console.log($(hau).data('id'));
+
 }
 
