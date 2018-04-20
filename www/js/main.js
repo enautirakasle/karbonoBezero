@@ -1,3 +1,6 @@
+var maquina = 'http://127.0.0.1:8000';
+// http://karbonoaztarna.herokuapp.com
+// http://huelladecarbono.ddns.net
 $(document).ready(function () {
 
     // login botoia programatu
@@ -9,7 +12,7 @@ $(document).ready(function () {
 
     });
 
-    //edifizio bag aukeratzen denean ejecutatu beharrekoa
+    //edifizio bat aukeratzen denean ejecutatu beharrekoa
 
 
 }); //ready bukaera
@@ -22,7 +25,7 @@ $("#eraikinOrria").on(
         $.ajax({
             type: 'GET',
             //http://karbonoaztarna.herokuapp.com/api/buildings
-            url: 'http://127.0.0.1:8000/api/buildings',
+            url: maquina + '/api/buildings',
             headers: {
                 'Authorization': 'Bearer ' + $('#token').val()
             }
@@ -44,7 +47,7 @@ $("#eraikinOrria").on(
                 //edifizio bag aukeratzen denean ejecutatu beharrekoa
                 $('.edif').click(function (e) {
                     //e.preventDefault();
-                    alkanzeOrriaBete(this);
+                    egindakoNeurketakZerrendatu(this);
                     return false;
                 });
 
@@ -53,46 +56,9 @@ $("#eraikinOrria").on(
                 // Triggered if response status code is NOT 200 (OK)
                 alert('error');
             });
-        /*
-        var myObj = [{
-            "name": "Mikel",
-            "age": 33,
-            "city": "Ondarroa"
-        }, {
-            "name": "John",
-            "age": 31,
-            "city": "New York"
-        }];
-        var myJSON = JSON.stringify(myObj);
-        // alert("kargatu aurrekoa");
-        var arraia = JSON.parse(myJSON);
-        for (i = 0; i < arraia.length; i++) {
-            var pertsona = arraia[i];
-            // alert(pertsona.name);
-            $('#eraikinZerrenda').append(
-                '<li><a href="?id=' + (i + 10) + '#alkantzeak">' +
-                pertsona.name + ' ' + pertsona.city +
-                '</a></li>').listview('refresh');
-        }*/
+
     });
 
-
-// alkantzeen orria kargatu aurretik proba batzuk egiten
-//momentuz ez da ezertarako
-/*
-$('#alkantzeak').on(
-	'pagebeforeshow',
-	function(event) {
-		Console.log(decode);
-		// TODO erakinarenDatuak.php egiteke dago
-		$.post("https://enautirakasle.000webhostapp/eraikinarenDatuak.php",
-			datuak,
-			function(data) {
-				// TODO zerbitzariaren erantzuna doa hemen
-
-			});
-	});
-	*/
 
 /*
  * logina egin eta zabaldu beharreko horria kargatuko du.
@@ -102,7 +68,7 @@ function login(datuak) {
 
     $.ajax({
         type: 'POST',
-        url: 'http://127.0.0.1:8000/api/login',
+        url: maquina + '/api/login',
         data: datuak
     })
         .done(function (responseText) {
@@ -141,11 +107,60 @@ function probaJson(datuak) {
         });
 }
 
+function egindakoNeurketakZerrendatu(hau) {
+    //console.log($(hau).data('id'));
+    var eraikinId = $(hau).data('id');
+    var urlDeia = maquina + '/api/alcances/' + eraikinId;
+    //var apiTokena = $('#token').val();
+    //console.log(apiTokena);
+    $.ajax({
+        type: 'GET',
+        //http://karbonoaztarna.herokuapp.com/api/buildings
+        url: urlDeia,
+        headers: {
+            'Authorization': 'Bearer ' + $('#token').val()
+        }
+    })
+        .done(function (responseText) {
+            // Triggered if response status code is 200 (OK)
+            alert("done");
+            // Triggered if response status code is 200 (OK)
+            //alert("done");
+            for (i = 0; i < responseText.length; i++) {
+                var estudioa = responseText[i];
+                if(estudioa.carbon_footprint != null){
+                    $('#estudioZerrenda').append(
+                        '<li>' +
+                        '<a class="estudio" data-id="' + estudioa.id + '" href="#alkantzeak">' +
+                        estudioa.id + ' (' + estudioa.carbon_footprint + ' ' +
+                        estudioa.building_id +
+                        ')</a>' +
+                        '</li>');
+                }
+
+            }
+            //edifizio bag aukeratzen denean ejecutatu beharrekoa
+            $('.estudio').click(function (e) {
+                //e.preventDefault();
+                alkanzeOrriaBete(this);
+                return false;
+            });
+            $.mobile.changePage("#estudioOria");
+
+
+
+        })
+        .fail(function (jqXHR, status, error) {
+            // Triggered if response status code is NOT 200 (OK)
+            alert('error');
+        });
+}
+
 //clikatu den eraikinetik bere id-arekin alkatzeen orria bete
 function alkanzeOrriaBete(hau) {
     console.log($(hau).data('id'));
     var eraikinId = $(hau).data('id');
-    var urlDeia = 'http://127.0.0.1:8000/api/buildings/'+eraikinId;
+    var urlDeia = maquina + '/api/buildings/ ' + eraikinId;
     var apiTokena = $('#token').val();
     console.log(apiTokena);
     $.ajax({
@@ -166,7 +181,5 @@ function alkanzeOrriaBete(hau) {
             // Triggered if response status code is NOT 200 (OK)
             alert('error');
         });
-
-
 }
 
