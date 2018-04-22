@@ -12,7 +12,14 @@ $(document).ready(function () {
 
     });
 
-    //edifizio bat aukeratzen denean ejecutatu beharrekoa
+    $('.irten').on("click", function(event){
+        //loggouta egin
+
+        //login orria kargatu
+        $('#token').val("");
+        $.mobile.changePage("#login");
+        $.mobile.changePage("#pageLogout");
+    })
 
 
 }); //ready bukaera
