@@ -63,6 +63,10 @@ $("#eraikinOrria").on(
 /*
  * logina egin eta zabaldu beharreko horria kargatuko du.
  */
+function loggout(){
+
+}
+
 function login(datuak) {
 
 
@@ -131,7 +135,7 @@ function egindakoNeurketakZerrendatu(hau) {
                 if(estudioa.carbon_footprint != null){
                     $('#estudioZerrenda').append(
                         '<li>' +
-                        '<a class="estudio" data-id="' + estudioa.id + '" href="#alkantzeak">' +
+                        '<a class="estudio" data-idbuilding="'+ estudioa.building_id +'" data-id="' + estudioa.id + '" href="#alkantzeak">' +
                         estudioa.id + ' (' + estudioa.carbon_footprint + ' ' +
                         estudioa.building_id +
                         ')</a>' +
@@ -158,11 +162,25 @@ function egindakoNeurketakZerrendatu(hau) {
 
 //clikatu den eraikinetik bere id-arekin alkatzeen orria bete
 function alkanzeOrriaBete(hau) {
-    console.log($(hau).data('id'));
-    var eraikinId = $(hau).data('id');
-    var urlDeia = maquina + '/api/buildings/ ' + eraikinId;
-    var apiTokena = $('#token').val();
-    console.log(apiTokena);
+    var eraikinId = $(hau).data('idbuilding');
+    var alkanzeId = $(hau).data('id');
+    var urlDeia = maquina + '/api/alcances/' + eraikinId;
+    var datuakPantailaratu = function (estudioa) {
+        $('#urtea').html("Urtea " + estudioa.year);
+        //alkace1
+        $('#gas-natural1').val(estudioa.a1_gas_natural_kwh);
+        $('#gas-natural2').val(estudioa.a1_gas_natural_nm3);
+        $('#refrigerantes').val(estudioa.a1_refrigerantes);
+        $('#recarga-gas-refrigerantes').val(estudioa.a1_recarga_gases_refrigerantes);
+        //alcance2
+        $('#electricidad').val(estudioa.a2_electricidad_kwh);
+        //alcance3
+        $('#agua-potable').val(estudioa.a3_agua_potable_m3);
+        $('#consumo-papel').val(estudioa.a3_papel_carton_consumo_kg);
+        $('#residuos-papel').val(estudioa.a3_papel_carton_residuos_kg);
+        $('#factor').val(estudioa.a3_factor_kwh_nm3);
+
+    };
     $.ajax({
         type: 'GET',
         //http://karbonoaztarna.herokuapp.com/api/buildings
@@ -173,9 +191,13 @@ function alkanzeOrriaBete(hau) {
     })
         .done(function (responseText) {
             // Triggered if response status code is 200 (OK)
-            alert("done");
-
-
+            for (i = 0; i < responseText.length; i++) {
+                var estudioa = responseText[i];
+                if(estudioa.id === alkanzeId){
+                    datuakPantailaratu(estudioa);
+                }
+            }
+            $.mobile.changePage("#alkantzeak");
         })
         .fail(function (jqXHR, status, error) {
             // Triggered if response status code is NOT 200 (OK)
