@@ -2,155 +2,173 @@
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--	<meta http-equiv="refresh" content="5">-->
-<title>Karbono aztarrrna</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--	<meta http-equiv="refresh" content="5">-->
+    <title>Karbono aztarrrna</title>
 
-<link rel="stylesheet" href="./jquery.mobile/jquery.mobile-1.4.5.css" />
-<script src="./jquery.mobile/jquery.js"></script>
-<!-- 
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script
-			  src="https://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			  crossorigin="anonymous"></script> -->
-<script src="./jquery.mobile/jquery.mobile-1.4.5.js"></script>
+    <link rel="stylesheet" href="./jquery.mobile/jquery.mobile-1.4.5.css"/>
+    <script src="./jquery.mobile/jquery.js"></script>
+    <!--
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script
+                  src="https://code.jquery.com/jquery-3.3.1.min.js"
+                  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                  crossorigin="anonymous"></script> -->
+    <script src="./jquery.mobile/jquery.mobile-1.4.5.js"></script>
 </head>
 
 <body>
-	<!-- Logina egiteko orria, hasiera orria: #login -->
-	<div data-role="page" id="login" data-title="Login">
-		<div role="main" class="ui-content">
-			<div class="ui-grid-a">
-				<div class="ui-block-a">
-					<form id="loginForm">
-						<div class="ui-field-contain">
-							<label for="email">Erabiltzailea:</label> <input
-								type="text" name="email" id="email"
-								placeholder="Erabiltzailea" value="sortizdearri@zubirimanteo.com">
-						</div>
-						<div class="ui-field-contain">
-							<label for="password">Pasahitza:</label> <input type="text"
-								name="password" id="password" placeholder="Pasahitza" value="sortizdearri">
-						</div>
-						<div class="ui-field-contain">
-							<button type="submit" id="sartu"
-								class="ui-shadow ui-btn ui-corner-all">sartu</button>
-						</div>
-					</form>
-				</div>
-				<div class="ui-block-b">
-					<img src="img/huella.png" />
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /page login-->
-	<input type="hidden" id="token"/>
-	<!-- Egindako azterketak agertzen diren orria hemendik azterketa aukeratuta datuak sartuko dira: #azterketak -->
-	<div data-role="page" id="eraikinOrria" data-title="Eraikin aztertuak">
-		<div role="main" class="ui-content">
-			Erabiltzaile horrek burututako azterketa desberdinak
-			<ul data-role="listview" id="eraikinZerrenda">
-				<!-- adibidea literalki idatzia
-				<li><a class="edif" data-id="12" href="#alkanzeak">Audi</a></li>
-				-->
-			</ul>
-		</div>
-	</div>
-	<!-- /page -->
+<!-- Logina egiteko orria, hasiera orria: #login -->
+<div data-role="page" id="login" data-title="Login">
+    <div role="main" class="ui-content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <form id="loginForm">
+                    <div class="ui-field-contain">
+                        <label for="email">Erabiltzailea:</label> <input
+                            type="text" name="email" id="email"
+                            placeholder="Erabiltzailea" value="sortizdearri@zubirimanteo.com">
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="password">Pasahitza:</label> <input type="text"
+                                                                        name="password" id="password"
+                                                                        placeholder="Pasahitza" value="sortizdearri">
+                    </div>
+                    <div class="ui-field-contain">
+                        <button type="submit" id="sartu"
+                                class="ui-shadow ui-btn ui-corner-all">sartu
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="ui-block-b">
+                <img src="img/huella.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page login-->
+<input type="hidden" id="token"/>
+<!-- Egindako azterketak agertzen diren orria hemendik azterketa aukeratuta datuak sartuko dira: #azterketak -->
+<div data-role="page" id="eraikinOrria" data-title="Eraikin aztertuak">
+    <div data-role="header">
+        <h1>Erabiltzaile horrek burututako azterketa desberdinak</h1>
+    </div>
+    <div role="main" class="ui-content">
 
-	<!-- egin diren estudioen zerrenda, momentuz bakarrik bukatutakoena-->
-	<div data-role="page" id="estudioOria" data-title="Egindako neurketak">
-		<div role="main" class="ui-content">
-			Eraikin honen neurketa hauek egin dira
-			<ul data-role="listview" id="estudioZerrenda">
-				<!-- adibidea literalki idatzia
-				<li><a class="estudio" data-id="12" href="#alkantzeak">adibideaestudio</a></li>
-				-->
+        <ul data-role="listview" id="eraikinZerrenda">
+            <!-- adibidea literalki idatzia
+            <li><a class="edif" data-id="12" href="#alkanzeak">Audi</a></li>
+            -->
+        </ul>
+    </div>
+</div>
+<!-- /page -->
 
-			</ul>
-		</div>
-	</div>
-	<!-- /page -->
+<!-- egin diren estudioen zerrenda, momentuz bakarrik bukatutakoena-->
+<div data-role="page" id="estudioOria" data-title="Egindako neurketak">
+    <div data-role="header">
+        <h1>Eraikin honen neurketa hauek egin dira</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <ul data-role="listview" id="estudioZerrenda">
+            <!-- adibidea literalki idatzia
+            <li><a class="estudio" data-id="12" href="#alkantzeak">adibideaestudio</a></li>
+            -->
 
-	<!-- Formularioak, datuak sartzeko formularioak daude hemen: #alkanzeak -->
-	<div data-role="page" id="alkantzeak" data-title="Alkantzeak">
-		<div data-role="header">
-			<h1>Sartu datuak</h1>
-		</div>
-		<div role="main" class="ui-content">
-			<div class="ui-field-contain">
-				<label for="text-12">Text input:</label> <input type="text"
-					name="text-12" id="text-12" value="">
-			</div>
-			<form id="kontsumoDatuak">
-				<div data-role="collapsible">
-					<h4>Alcance 1</h4>
-					<div class="ui-field-contain">
-						<label for="text-12">Text input:</label> <input type="text"
-							name="text-12" id="text-12" value="">
-					</div>
-					<div class="ui-field-contain">
-						<label for="argia">Argi kontsumoa:</label> <input type="text"
-							name="argia" id="argia" value="" />
-						<!-- placeholder="Text input" -->
-					</div>
-					<div class="ui-field-contain">
-						<label for="gasa">Gas kontsumoa:</label> <input type="text"
-							name="gasa" id="gasa" value="" /> <label for="ura">Ur
-							kontsumoa:</label> <input type="text" name="ura" id="ura" value="" />
-						<!-- placeholder="Text input" -->
-					</div>
-				</div>
-				<div data-role="collapsible">
-					<h4>Alcance 2</h4>
-					<div class="ui-field-contain">
-						<label for="kontsumoa4">Kontsumoa4:</label> <input type="text"
-							name="kontsumoa4" id="kontsumoa4" value="" />
-						<!-- placeholder="Text input" -->
-					</div>
-					<div class="ui-field-contain">
-						<label for="kontsumoa5">Kontsumoa5:</label> <input type="text"
-							name="kontsumoa5" id="kontsumoa5" value="" />
-					</div>
-				</div>
-				<div data-role="collapsible">
-					<h4>Alcance 3</h4>
-					<div class="ui-field-contain">
-						<label for="kontsumoa6">Kontsumoa6:</label> <input type="text"
-							name="kontsumoa6" id="kontsumoa6" value="" />
-						<!-- placeholder="Text input" -->
-					</div>
-					<div class="ui-field-contain">
-						<label for="kontsumoa7">Kontsumoa7:</label> <input type="text"
-							name="kontsumoa7" id="kontsumoa7" value="" />
-					</div>
-				</div>
-			</form>
-		</div>
-		<div data-role="footer" data-position="fixed">
-			<button class="ui-btn ui-icon-check ui-btn-icon-left">Gorde</button>
-		</div>
-	</div>
-	<!-- /page -->
+        </ul>
+    </div>
+</div>
+<!-- /page -->
+
+<!-- Formularioak, datuak sartzeko formularioak daude hemen: #alkanzeak -->
+<div data-role="page" id="alkantzeak" data-title="Alkantzeak">
+    <div data-role="header">
+        <h1>Datos de alcances</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-field-contain">
+            <!--<label for="text-12">Text input:</label> <input type="text" disabled
+                                                            name="text-12" id="text-12" value="">-->
+            <h3 id="urtea"></h3>
+        </div>
+        <form id="kontsumoDatuak">
+            <div data-role="collapsible">
+                <h4>Alcance 1</h4>
+                <div class="ui-field-contain">
+                    <label for="gas-natural1">Gas natural:</label> <input type="text" disabled
+                                                                          name="gas-natural1" id="gas-natural1"
+                                                                          value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="gas-natural2">Gas natural:</label> <input type="text" disabled
+                                                                          name="gas-natural2" id="gas-natural2"
+                                                                          value=""/>
+                    <!-- placeholder="Text input" -->
+                </div>
+                <div class="ui-field-contain">
+                    <label for="refrigerantes">Refrigerantes:</label> <input type="text" disabled
+                                                                          name="refrigerantes" id="refrigerantes"
+                                                                          value=""/>
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="recarga-gas-refrigerantes">Recarga gases refrigerantes:</label> <input type="text" disabled
+                                                                             name="recarga-gas-refrigerantes" id="recarga-gas-refrigerantes"
+                                                                             value=""/>
+
+                </div>
+            </div>
+            <div data-role="collapsible">
+                <h4>Alcance 2</h4>
+                <div class="ui-field-contain">
+                    <label for="electricidad">Electricidad:</label> <input type="text" disabled
+                                                                       name="electricidad" id="electricidad" value=""/>
+                    <!-- placeholder="Text input" -->
+                </div>
+
+            </div>
+            <div data-role="collapsible">
+                <h4>Alcance 3</h4>
+                <div class="ui-field-contain">
+                    <label for="agua-potable">Agua potable:</label> <input type="text" disabled
+                                                                       name="agua-potable" id="agua-potable" value=""/>
+                    <!-- placeholder="Text input" -->
+                </div>
+                <div class="ui-field-contain">
+                    <label for="consumo-papel">Papel y carton:</label> <input type="text" placeholder="consumo" disabled
+                                                                       name="consumo-papel" id="consumo-papel" value=""/>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="residuos-papel">Papel y carton:</label> <input type="text" placeholder="residuos" disabled
+                                                                              name="residuos-papel" id="residuos-papel" value=""/>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="factor">Factor:</label> <input type="text" disabled
+                                                                               name="factor" id="factor" value=""/>
+                </div>
+            </div>
+        </form>
+    </div>
+   <!-- <div data-role="footer" data-position="fixed">
+        <button class="ui-btn ui-icon-check ui-btn-icon-left">Gorde</button>
+    </div>-->
+</div>
+<!-- /page -->
 
 
-
-	<!-- Aqui nuestro dialog con el mensaje de error  -->
-	<section id="pageError" data-role="dialog">
-		<header data-role="header">
-			<h1>Error</h1>
-		</header>
-		<article data-role="content">
-			<p>Usuario o contraseña no valida</p>
-			<a href="#" data-role="button" data-rel="back">Aceptar</a>
-		</article>
-	</section>
-	<!-- Errore mezuaren dialogo bukaera -->
-
-
+<!-- Aqui nuestro dialog con el mensaje de error  -->
+<section id="pageError" data-role="dialog">
+    <header data-role="header">
+        <h1>Error</h1>
+    </header>
+    <article data-role="content">
+        <p>Usuario o contraseña no valida</p>
+        <a href="#" data-role="button" data-rel="back">Aceptar</a>
+    </article>
+</section>
+<!-- Errore mezuaren dialogo bukaera -->
 
 
 </body>
