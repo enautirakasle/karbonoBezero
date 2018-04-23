@@ -1,6 +1,7 @@
-var maquina = 'http://127.0.0.1:8000';
+var maquina = 'http://karbonoaztarna.herokuapp.com';
 // http://karbonoaztarna.herokuapp.com
 // http://huelladecarbono.ddns.net
+// http://127.0.0.1:8000
 $(document).ready(function () {
 
     // login botoia programatu
