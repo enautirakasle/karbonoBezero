@@ -1,6 +1,7 @@
-var maquina = 'http://127.0.0.1:8000';
+var maquina = 'http://karbonoaztarna.herokuapp.com';
 // http://karbonoaztarna.herokuapp.com
 // http://huelladecarbono.ddns.net
+// http://127.0.0.1:8000
 $(document).ready(function () {
 
     // login botoia programatu
@@ -16,6 +17,8 @@ $(document).ready(function () {
         //loggouta egin
 
         //login orria kargatu
+    	$("#eraikinZerrenda").empty();
+    	$("#estudioZerrenda").empty();
         $('#token').val("");
         $.mobile.changePage("#login");
         $.mobile.changePage("#pageLogout");
@@ -40,6 +43,7 @@ $("#eraikinOrria").on(
             .done(function (responseText) {
                 // Triggered if response status code is 200 (OK)
                 //alert("done");
+            	$("#eraikinZerrenda").empty()
                 for (i = 0; i < responseText.length; i++) {
                     var eraikina = responseText[i];
 
@@ -77,6 +81,8 @@ function loggout(){
 function login(datuak) {
 
 
+	alert( maquina + '/api/login');
+	alert(datuak);
     $.ajax({
         type: 'POST',
         url: maquina + '/api/login',
@@ -84,7 +90,7 @@ function login(datuak) {
     })
         .done(function (responseText) {
             // Triggered if response status code is 200 (OK)
-            alert("done");
+            alert(responseText.data.api_token);
             if (responseText.data) {
                 $('#token').val(responseText.data.api_token);
                 $.mobile.changePage("#eraikinOrria");
@@ -94,6 +100,7 @@ function login(datuak) {
         })
         .fail(function (jqXHR, status, error) {
             // Triggered if response status code is NOT 200 (OK)
+        	alert(jqXHR.responseText);
             $.mobile.changePage("#pageError");
         });
 //         .always( function() {
@@ -137,6 +144,7 @@ function egindakoNeurketakZerrendatu(hau) {
             alert("done");
             // Triggered if response status code is 200 (OK)
             //alert("done");
+            $("#estudioZerrenda").empty();
             for (i = 0; i < responseText.length; i++) {
                 var estudioa = responseText[i];
                 if(estudioa.carbon_footprint != null){
