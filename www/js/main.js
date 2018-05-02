@@ -82,6 +82,7 @@ function login(datuak) {
 
 	//alert( maquina + '/api/login');
 	//alert(datuak);
+    $.mobile.loading( "show");
     $.ajax({
         type: 'POST',
         url: maquina + '/api/login',
@@ -90,6 +91,7 @@ function login(datuak) {
         .done(function (responseText) {
             // Triggered if response status code is 200 (OK)
             //alert(responseText.data.api_token);
+            $.mobile.loading( "hide");
             if (responseText.data) {
                 $('#token').val(responseText.data.api_token);
                 $.mobile.changePage("#eraikinOrria");
