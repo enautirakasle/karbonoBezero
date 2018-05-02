@@ -1,4 +1,4 @@
-var maquina = 'http://karbonoaztarna.herokuapp.com';
+var maquina = 'http://127.0.0.1:8000';
 // http://karbonoaztarna.herokuapp.com
 // http://huelladecarbono.ddns.net
 // http://127.0.0.1:8000
@@ -14,9 +14,11 @@ $(document).ready(function () {
     });
 
     $('.irten').on("click", function(event){
-        //loggouta egin
+        //TODO loggouta egin ajaxez
 
         //login orria kargatu
+        $('#email').val('');
+        $('#password').val('');
     	$("#eraikinZerrenda").empty();
     	$("#estudioZerrenda").empty();
         $('#token').val("");
@@ -43,7 +45,7 @@ $("#eraikinOrria").on(
             .done(function (responseText) {
                 // Triggered if response status code is 200 (OK)
                 //alert("done");
-            	$("#eraikinZerrenda").empty()
+            	$("#eraikinZerrenda").empty();
                 for (i = 0; i < responseText.length; i++) {
                     var eraikina = responseText[i];
 
@@ -74,15 +76,12 @@ $("#eraikinOrria").on(
 /*
  * logina egin eta zabaldu beharreko horria kargatuko du.
  */
-function loggout(){
-
-}
 
 function login(datuak) {
 
 
-	alert( maquina + '/api/login');
-	alert(datuak);
+	//alert( maquina + '/api/login');
+	//alert(datuak);
     $.ajax({
         type: 'POST',
         url: maquina + '/api/login',
@@ -90,7 +89,7 @@ function login(datuak) {
     })
         .done(function (responseText) {
             // Triggered if response status code is 200 (OK)
-            alert(responseText.data.api_token);
+            //alert(responseText.data.api_token);
             if (responseText.data) {
                 $('#token').val(responseText.data.api_token);
                 $.mobile.changePage("#eraikinOrria");
@@ -103,27 +102,8 @@ function login(datuak) {
         	alert(jqXHR.responseText);
             $.mobile.changePage("#pageError");
         });
-//         .always( function() {
-//            // Always run after .done() or .fail()
-//           alert("beti");
-//         });
-
-//	$.post("https://enautirakasle.000webhostapp.com/login.php", datuak,
-//		function(data) {
-//			if (data === "ok") {
-//			alert("if");
-//			} else {
-//				alert("else");
-//			}
-//		});
 }
 
-function probaJson(datuak) {
-    $.post("https://warm-lowlands-97387.herokuapp.com/api/buildingsProba", datuak,
-        function (data) {
-            alert(data.name + "\n" + data.description + "\n" + data.postcode + "\n" + data.address_with_number);
-        });
-}
 
 function egindakoNeurketakZerrendatu(hau) {
     //console.log($(hau).data('id'));
@@ -133,15 +113,12 @@ function egindakoNeurketakZerrendatu(hau) {
     //console.log(apiTokena);
     $.ajax({
         type: 'GET',
-        //http://karbonoaztarna.herokuapp.com/api/buildings
         url: urlDeia,
         headers: {
             'Authorization': 'Bearer ' + $('#token').val()
         }
     })
         .done(function (responseText) {
-            // Triggered if response status code is 200 (OK)
-            alert("done");
             // Triggered if response status code is 200 (OK)
             //alert("done");
             $("#estudioZerrenda").empty();
@@ -151,13 +128,14 @@ function egindakoNeurketakZerrendatu(hau) {
                     $('#estudioZerrenda').append(
                         '<li>' +
                         '<a class="estudio" data-idbuilding="'+ estudioa.building_id +'" data-id="' + estudioa.id + '" href="#alkantzeak">' +
-                        estudioa.id + ' (' + estudioa.carbon_footprint + ' ' +
-                        estudioa.building_id +
-                        ')</a>' +
+                        estudioa.year +
+                        '</a>' +
                         '</li>');
                 }
 
             }
+            $("#estudioZerrenda").listview().listview('refresh');
+
             //edifizio bag aukeratzen denean ejecutatu beharrekoa
             $('.estudio').click(function (e) {
                 //e.preventDefault();
