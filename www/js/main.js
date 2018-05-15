@@ -1,4 +1,4 @@
-var maquina = 'http://127.0.0.1:8000';
+var maquina = 'http://karbonoaztarna.herokuapp.com';
 // http://karbonoaztarna.herokuapp.com
 // http://huelladecarbono.ddns.net
 // http://127.0.0.1:8000
@@ -164,7 +164,6 @@ function alkanzeOrriaBete(hau) {
         $('#urtea').html("Urtea " + estudioa.year);
         //alkace1
         $('#gas-natural1').val(estudioa.a1_gas_natural_kwh);
-        $('#gas-natural2').val(estudioa.a1_gas_natural_nm3);
         $('#refrigerantes').val(estudioa.a1_refrigerantes);
         $('#recarga-gas-refrigerantes').val(estudioa.a1_recarga_gases_refrigerantes);
         //alcance2
@@ -173,7 +172,7 @@ function alkanzeOrriaBete(hau) {
         $('#agua-potable').val(estudioa.a3_agua_potable_m3);
         $('#consumo-papel').val(estudioa.a3_papel_carton_consumo_kg);
         $('#residuos-papel').val(estudioa.a3_papel_carton_residuos_kg);
-        $('#factor').val(estudioa.a3_factor_kwh_nm3);
+       
 
     };
     $.ajax({
